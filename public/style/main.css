@@ -1,0 +1,234 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #fff;
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    font-size:16px;
+  }
+
+.headerlogo{
+    background: #4141be;
+    border-bottom-style: solid;
+    border: 5px;
+    border-color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); 
+    border-bottom: 5px solid rgba(0,0,0,0.2);
+    width: 100%;
+    position: fixed;
+    height: 70;
+    
+    z-index: 5;
+    
+
+}
+.headerlogo .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap ;
+}
+.pageheader nav{
+    margin: 1em;
+    text-align:center; 
+    display:inline-flex;
+}
+
+.pageheader > .searchform{
+    align-self: center;
+    display: inline-flex;
+    margin : 1em;
+}
+.pageheader> .searchform input::placeholder{
+    color:white;
+
+}
+.container .logo {
+    display: inline-flex;
+}
+.container h1{
+    position: relative;
+    left: 1em;
+    color: white;
+}
+.pageheader a {
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  .pageheader a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+ #searchbar{
+    
+    border: 3px solid white;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    background: transparent;
+ }
+ #searchbar:target{
+    
+    border-bottom: 3px solid white;
+    padding: 5px;
+    height: 20px;
+    outline: none;
+    color: #9DBFAF;
+    background: transparent;
+ }
+ #searchbutton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid white;
+    background: white;
+    text-align: center;
+    
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  @media (max-width: 1100px){
+    .pageheader nav{
+        display: none;
+    }
+  }
+
+
+
+
+  /* wrapper */
+
+  .big_wrapper {
+    display: inline-block;
+    padding-top: 100px;
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    background: #4141be;
+    align-content: space-around;
+
+   
+  }
+.big_wrapper b {
+  margin:auto;
+  font-size: 1.35rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px; 
+  color:white;
+  }
+  .slidercontainer{
+      width: 40%;
+      
+      margin: auto;
+  }
+
+  .slidercontainer input[type=range] {
+    -webkit-appearance: none;
+    width: 60%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+  
+  }
+  .slidercontainer input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: white;
+    cursor: pointer;
+  }
+  .slidercontainer button[type=submit]{
+    width: 30%;
+    background-color: white;
+    border: none;
+    color: #4141be;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+  }
+  
+
+
+  /* main */
+  .top_lists{
+      margin: 5em 10em;
+      display: flex;
+      justify-content: space-around ;
+      flex-wrap: wrap ;
+  }
+  .top_lists > .top_block > h3{
+    border-bottom: 2px solid yellow;
+    margin:-1px;
+  }
+   /*.PhoneList > .item:first-child{
+    border-bottom: 2px solid green;
+  }*/
+  .PhoneList .item{
+    position: relative;
+    border-bottom: 1px solid #eeeff2;
+    overflow: hidden;
+    height: 33px;
+    margin-bottom: -1px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+       
+
+  .footer{
+      background:rgb(169, 169, 169, 0.8)  ;
+  }
+
+  .footer .statistic{
+    display: flex;
+    justify-content: space-around ;
+    flex-wrap: wrap ;
+  }
+
+  .brandlogo{
+      position: absolute;
+  }
+
+
+
+  /*Featured brands*/
+  .featured_brands_wrapper{
+    padding-top: 100px;
+    align-self: center  ;
+    align-content: center;
+
+   }
+   .featured_brands{
+       display: flex;
+       align-content: center;
+   }
+   .featured_brands_wrapper .brands_image_list{
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin:auto;
+      list-style-type: none;
+  }
+  .item_featured_brands img{
+      margin:2px;
+      border: 2px solid #eeeff2;
+  }

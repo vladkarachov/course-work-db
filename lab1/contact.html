@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+        <title>Contact us</title>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+        .btnSubmit
+        {
+            
+            border-radius: 1rem;
+            padding: 1.5%;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            background-color:#4141be;
+        }
+        </style>
+<head>
+	<title>Contact us</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Contact us</h1>
+    
+        <form class="contactform" action="#">
+            <div class="row">
+                <div class='col-md-6'>
+                <label for="contact_name"> Name</label>
+               <input type="text" placeholder="Enter name" name="contact_name" required maxlength="30" autocomplete="cc-name" class="form-control"></p>
+            </div>
+            <div class='col-md-6'>
+               <label for="mail">Email</label>
+                <input type="email" placeholder="Enter email" name="mail" required maxlength="50" class="form-control"></p>    
+            </div></div>
+
+            <div class='row'>
+                <div class="col-md-12">
+                <label for = "text">Messenge</label>
+            </div>
+        </div>
+                <p><textarea rows="4" cols = "50" maxlength="300" class="form-control"></textarea></p>
+                <p><button type="submit" class="btnSubmit">Submit</button></p>
+            
+            </form>
+            
+        </div>         
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="style/main.css" rel="stylesheet">
+</head>
+
+
+
+<header class='headerlogo'>
+    <div class="container">
+        <div class = 'logo'>
+            <img src="logo.png" width="50" height="50" alt = 'logo'>
+            <h1>PhoneFind</h1>
+        </div >
+        <div class = pageheader>
+            <nav>
+                <a href='/'>Main Page</a>
+                <a href="phones.html">Phones</a>
+                <a href="about.html">About us</a>
+                <a href="contact.html">Contact</a>
+                <a href='login.html'>Login/Singup</a>
+            </nav>
+            <form class = 'searchform' id="searchform" method="post" action="/search">
+                <input type='text' placeholder='Search...' name = 'searchbar' maxlength="20">
+                <input type="hidden" id="{{_id}}" name="id">
+                <button type="submit" value="Search" id="searchbutton">
+                    <i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+</header>

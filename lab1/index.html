@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>test</title>
+        <link href="style/main.css" rel="stylesheet">
+         
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+        <header class='headerlogo'>
+                <div class="container">
+		<div class = 'logo'>
+                <img src="logo.png" width="50" height="50" alt = 'logo'>
+                <h1>PhoneFind</h1>
+                </div >
+                <div class = pageheader>
+                <nav>
+                        <a href='index.html'>Main Page</a>
+                        <a href="phones.html">Phones</a>                      
+                        <a href="about.html">About us</a>
+                        <a href="contact.html">Contact</a>
+                        <a href='login.html'>Login/Singup</a>
+                </nav>
+                <form class = 'searchform'>
+                        <input type='text' placeholder='Search...' id = 'searchbar' maxlength="20">
+                        <button type="submit" value="Search" id="searchbutton">
+                            <i class="fa fa-search"></i></button>
+                </form>
+                </div>
+        </div>
+        </header>
+        <main>
+                <div class = "big_wrapper">
+                     <b>How much do you want to spend on your next smartphone? </b>
+                        <div class='slidercontainer'>
+                         <form oninput="searchPrice.value=parseInt(tel_price.value)" class='sliderform'> 
+                                <input type="range" value="200" id="tel_price" min="50" max="1500" step="50" id="priceslider">
+                                <output name = "searchPrice" for="tel_price">200</output> 
+                                <button type="submit">Search price</button>
+                         </form>       
+                        </div>
+                        <!--  <div class='slidercontainer'>
+                                       
+                                               <input type="range" value="200" id="tel_price" min="50" max="1500" step="50">
+                                               <output name = "searchPrice" for="tel_price">200</output> 
+                                               <button type="submit">Search price</button>
+                                               
+                                       </div>-->
+                </div>
+                
+
+                <div class='top_lists'>
+                        <div class="top_block">
+                        <h3>Best Sellers</h3>                
+                        <ul class = "PhoneList">
+                                <li class="item">Redmi Note 7</li>
+                                <li class="item"> Xiaomi Mi 9T Pro</li>
+                                <li class="item"> Xiaomi Mi 9</li>
+                                <li class="item">Xiaomi Mi 9T</li>
+                                <li class="item">Redmi Note 8 Pro</li>                   
+                        </ul>
+                        </div>
+                        <div class="top_block">
+                                        <h3>Best Sellers</h3>                
+                                        <ul class = "PhoneList">
+                                                <li class="item">Redmi Note 7</li>
+                                                <li class="item"> Xiaomi Mi 9T Pro</li>
+                                                <li class="item"> Xiaomi Mi 9</li>
+                                                <li class="item">Xiaomi Mi 9T</li>
+                                                <li class="item">Redmi Note 8 Pro</li>                   
+                                        </ul>
+                        </div>
+                        <div class="top_block">
+                                        <h3>Best Sellers</h3>                
+                                        <ul class = "PhoneList">
+                                                <li class="item">Redmi Note 7</li>
+                                                <li class="item"> Xiaomi Mi 9T Pro</li>
+                                                <li class="item"> Xiaomi Mi 9</li>
+                                                <li class="item">Xiaomi Mi 9T</li>
+                                                <li class="item">Redmi Note 8 Pro</li>                   
+                                        </ul>
+                        
+                        
+                </div>
+                </div>   
+                <div class="featured_brands_wrapper">
+                        <h2 class="k-h2">Featured Brands</h2>
+                        
+                        <div class="featured_brands">
+                                <ul class="brands_image_list    ">
+                                                <li class="item_featured_brands"><a href="#" class="ir" ><img src= "pic/mainpage/apple.png" height="auto" width="200" alt="Apple"></a></li>
+                                                <li class="item_featured_brands"><a href="#" class="ir" ><img src= "pic/mainpage/asus.png" height="auto" width="200" alt="Asus"></a></li>
+                                                <li class="item_featured_brands"><a href="#" class="ir" ><img src= "pic/mainpage/google.png" height="auto" width="200" alt="Google"></a></li>
+                                                <li class="item_featured_brands"><a href="#" class="ir" ><img src= "pic/mainpage/htc.png" height="auto" width="200" alt="HTC"></a></li>
+                                                <li class="item_featured_brands"><a href="#" class="ir" ><img src= "pic/mainpage/huawei.png" height="auto" width="200" alt="huawei"></a></li>
+                                                <li class="item_featured_brands"><a href="#" class="ir" ><img src= "pic/mainpage/lenovo.png" height="auto" width="200" alt="Lenovo"></a></li>
+                                                
+                                                </ul></div>
+                                       </div>
+                                </div>
+              
+                        <!--<figure class='brandlogo'>
+                                <p><a href="page.html"><img src= "pic\pixel.webp" height="400" alt="google pixel"></a></p>
+                                <figcaption>
+                                        Google pixel 3a
+                                </figcaption>
+                        </figure>-->
+                </section>
+                 </div>
+        </main>
+        <footer class = "footer">
+                <ul class='statistic'>
+                        <li class='item'>
+                                <h4>Smartphones</h4>
+                                <h3>1</h3>
+                        </li>
+                        <li class='item'>
+                                        <h4>Stores</h4>
+                                        <h3>1</h3>
+                                </li>
+                        <li class='item'>
+                                <h4>Smartphones</h4>
+                                <h3>1</h3>
+                        </li>
+                </ul>
+        </footer>
+</body>
+</html>          
