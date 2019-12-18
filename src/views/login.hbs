@@ -1,0 +1,54 @@
+<body>
+<div class="container row">
+    <div class="login col-md-6 col-sm-12">
+        <h3>Log in</h3>
+        <form class="login_form form-group" action="/login" method="post">
+            <p><label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" id="uname" name="name" required maxlength="50" class="form-control"></p>
+
+            <p> <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="psw" name="password" required maxlength="50" class="form-control"></p>
+            <label class="form-group">
+                <input type="checkbox" checked="checked" name="remember"  class="form-control-sm"> Remember me
+            </label>
+            <button type="submit" class="btnSubmit" class="form-control">Login</button>
+
+        </form>
+
+    </div>
+    <div class="sign_up col-md-6 col-sm-12">
+        <h3>Sing up</h3>
+        <form class="login_form form-group" action="/register" method="post">
+            <p><label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="name" required maxlength="50" class="form-control"></p>
+
+            <p> <label for="pswr"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="pswr" name="password" required maxlength="50" class="form-control"></p>
+            <p> <label for="pswRE">Re enter password</label>
+                <input type="password" placeholder="repeat password" id="pswRE" name="passwordRe" required maxlength="50" class="form-control"></p>
+
+            <div >
+                <p>
+                    <b>Country</b>
+                    <select class="form-control" name="country_code">
+                        <option>Ukraine</option>
+                        <option>North Korea</option>
+                    </select>
+                </p>
+            </div>
+            <div >
+                <p> </p>
+                <b>Sex</b>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <p><input type = "radio" name="sex" value="man">Male</p>
+                    <p><input type = "radio"  name="sex" value="woman" class="ml-3">Female</p>
+                </div>
+            </div>
+            <button type="submit" class="btnSubmit">Sing up</button>
+
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

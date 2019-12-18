@@ -1,0 +1,85 @@
+<link href="/style/phoneIns.css" rel="stylesheet">
+<main>
+    <div class = "outer-wrapper">
+        <div class="container">
+        <div class="pic-wrapper col-lg-2 col-md-4 col-sm-8 px-0">
+            <img src="/pic/Phone.png"  class="img-fluid phone-pic" alt="{{name}}">
+        </div>
+        </div>
+    </div>
+    <div class="container p-3">
+    <div class="row">
+            <div class="col-9">
+                <div class="row">
+                    <div class="card col-sm-6 col-md-3">
+                        <div class="card-body">
+                            <p>{{phone.ram}}GB/{{phone.rom}}GB</p>
+                            <p>Sellers: {{review.length}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row"> <!--//todo значки в карточках, размеры колонок-->
+                    <div class="card col-sm-6 col-md-6 col-lg-3">
+                        <div class="card-body">
+                            <p>{{phone.screen}}</p>
+                            <p>{{phone.screen_type}}</p>
+                        </div>
+                    </div>
+                    <div class="card col-sm-6 col-md-6 col-lg-3">
+                        <div class="card-body">
+                            <p>{{phone.proc}}</p>
+                            <p>{{phone.ram}}GB RAM</p>
+                            <p>{{phone.rom}}GB ROM</p>
+                        </div>
+                    </div>
+                    <div class="card col-sm-6 col-md-6 col-lg-3">
+                        <div class="card-body">
+                            <p>{{phone.camera}}</p>
+                        </div>
+                    </div>
+                    <div class="card col-sm-6 col-md-6 col-lg-3">
+                        <div class="card-body">
+                            <p>{{phone.os}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Text</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                    {{#each review}}
+                        <tr >
+                            <th scope="row" >
+                                {{username}} aaa
+                            </th>
+                            <td class=>
+                                {{Text}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <aside class="card-group-item col-3 ">
+                <header class="card-header">
+                    <h6 class="title">Stores</h6>
+                </header>
+                <div class="card-body">
+                    {{#each stores}}
+                        <a href="{{link}}" class="card"><span>
+                            {{name}} ---</span>
+                            <span class="btn btn-primary"> {{price}}
+                        </span></a>
+                    {{/each}}
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>

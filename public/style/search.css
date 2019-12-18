@@ -1,0 +1,17 @@
+main{
+    padding-top: 100px;
+}
+.form-check-label{
+    text-transform: capitalize;
+}
+.phone-label{
+    text-transform: capitalize;
+}
+.phone-container{
+    width: 96%;
+    max-width: 512px;
+    }
+.phone-pic{
+    width: 100%; /* ширина картинки */
+    height: auto;
+}

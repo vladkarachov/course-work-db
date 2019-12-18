@@ -1,10 +1,15 @@
+
+
+
+
 <main>
     <div class = "big_wrapper">
         <b>How much do you want to spend on your next smartphone? </b>
         <div class='slidercontainer'>
-            <form oninput="searchPrice.value=parseInt(tel_price.value)" class='sliderform'>
-                <input type="range" value="200" id="tel_price" min="50" max="1500" step="50" id="priceslider">
+            <form oninput="searchPrice.value=parseInt(tel_price.value)" method="post" action="/search" class='sliderform'>
+                <input type="range" value="200" id="tel_price" min="50" max="1500" step="50" id="priceslider" name="maxprice">
                 <output name = "searchPrice" for="tel_price">200</output>
+                <input type="hidden" id="{{_id}}" name="id">
                 <button type="submit">Search price</button>
             </form>
         </div>
