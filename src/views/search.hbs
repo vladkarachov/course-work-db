@@ -22,31 +22,6 @@
                             <div class="filter-content">
                                 <div class="card-body">
 
-                                        <!--<label class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="brand" value="Apple">
-                                            <span class="form-check-label">
-                                            Apple
-                                          </span>
-                                        </label>
-                                        <label class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="google" name="brand">
-                                            <span class="form-check-label">
-                                            Google
-                                          </span>
-                                        </label>
-                                        <label class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="xiaomi" name="brand">
-                                            <span class="form-check-label">
-                                        Xiaomi
-                                      </span>
-                                        </label>
-                                        <label class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="samsung" name="brand">
-                                            <span class="form-check-label">
-                                        Samsung
-                                      </span>
-                                        </label>
-                            -->
                                     {{#each brandsnames}}
                                     <label class="form-check">
                                         <input class="form-check-input" type="checkbox" name="brand" value="{{brand}}">
@@ -80,7 +55,7 @@
                         </article>
                         <article class="card-group-item">
                             <header class="card-header">
-                                <h6 class="title">Ram</h6>
+                                <h6 class="title">Ram, GB</h6>
                             </header>
                             <div class="card-body">
                             <input type="range"  min="1" max="8" id="priceslider" value=2 name="ramslider">
@@ -89,7 +64,7 @@
                         </article>
                         <article class="card-group-item">
                             <header class="card-header">
-                            <h6 class="title">Rom</h6>
+                            <h6 class="title">Rom, GB</h6>
                             </header>
                             <div class="card-body">
                                 <input type="range"  min="16" max="128" id="priceslider" step="16" name="romslider" value="16">
@@ -127,6 +102,8 @@
 
                         {{/each}}
                     </ul>
+                {{else}}
+                    <h2 class="text-center">Nothing found!</h2>
                 {{/if}}
             </div>
             </div>

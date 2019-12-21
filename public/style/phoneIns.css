@@ -4,3 +4,11 @@
     min-height: 100px;
     background: #4141be;
 }
+
+#LikeButton{
+    height: 50px;
+    width: auto;
+    background: transparent;
+    border: 0px;
+    margin: 10px;
+}

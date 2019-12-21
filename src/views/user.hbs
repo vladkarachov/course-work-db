@@ -1,0 +1,88 @@
+<link href="style/search.css" rel="stylesheet">
+
+<main>
+
+    <div class="container">
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-dark">Log out</button>
+        </form>
+        {{#if user.role}}
+            <form action="/addPhone" method="post" class="col-4">
+                <div class="form-group" >
+                    <label for="Name">Name</label>
+                    <input type="text-area" class="form-control" id="Name" name="name" maxlength="200" >
+                </div>
+                <div class="form-group" >
+                    <label for="Brand">Brand</label>
+                    <input type="text-area" class="form-control" id="Brand" name="brand" maxlength="200" >
+                </div>
+                <div class="form-group" >
+                    <label for="proc">Proc</label>
+                    <input type="text-area" class="form-control" id="proc" name="proc" maxlength="200" >
+                </div>
+                <div class="form-group" >
+                    <label for="screen">Screen Resolution</label>
+                    <input type="text-area" class="form-control" id="screen" name="screen" maxlength="200" >
+                </div>
+                <div class="form-group" >
+                    <label for="screen-type">Screen type</label>
+                    <input type="text-area" class="form-control" id="screen-type" name="screen_type" maxlength="200" >
+                </div>
+                <div class="form-group" >
+                    <label for="camera">Camera</label>
+                    <input type="text-area" class="form-control" id="camera" name="camera" maxlength="200" >
+                </div>
+                <div class="form-group" >
+                    <label for="os">os</label>
+                    <input type="text-area" class="form-control" id="os" name="os" maxlength="200" >
+                </div>
+                <div class="form-group" >
+                    <label for="Ram">Ram</label>
+                    <input type="number" class="form-control" id="Ram" name="ram" >
+                </div>
+                <div class="form-group" >
+                    <label for="Rom">Rom</label>
+                    <input type="number" class="form-control" id="Rom" name="rom" >
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        {{/if}}
+
+
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">del</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each savedPhones}}
+                    <tr >
+                        <th scope="row" >
+                            {{name}}
+                        </th>
+                        <td>
+                            {{brand}}
+                        </td>
+                        <td>
+                            <a href="/search/phone/{{id}}">LINK</a>
+                        </td>
+                        <td>
+                            <form action="/deleteFromLikes" method="post">
+                            <input type="hidden" name="del_id" value="{{id}}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</main>

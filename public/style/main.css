@@ -21,7 +21,6 @@ body{
     width: 100%;
     position: fixed;
     height: 70px;
-    
     z-index: 5;
     
 
@@ -51,8 +50,7 @@ body{
     display: inline-flex;
 }
 .container h1{
-    position: relative;
-    left: 1em;
+
     color: white;
 }
 .pageheader a {
@@ -231,5 +229,5 @@ body{
   }
   .item_featured_brands img{
       margin:2px;
-      border: 2px solid #eeeff2;
+
   }

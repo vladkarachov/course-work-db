@@ -1,5 +1,3 @@
-
-
 const router = require('express').Router();
 const path = require('path')
 const phonesController = require(path.join('../controllers/phonesController'))
@@ -8,70 +6,77 @@ var brandsnames={};
 
 
 router.get('/', async (req, res) =>{
-    let queue;
-    phonesController.getLast(req).then(
-        (phones, er) =>
+    phonesController.getLast()
+        .then(
+        (phones) =>
     {
-        res.render("index", {layout: 'main', phones} );
+        if(req.user){
+            var user=req.user[0];
+        }
+        res.render("index", {layout: 'main', phones, user} );
     });
-})
+});
 
 router.post("/search", async (req, res) => {
-        //initialize brand field
+    //initialize brand field
 
-        if(!brandsnames.length){
-            phonesController.getbrands(req).then(
-                function f(phones) {
-                    brandsnames= phones;
-                },
-                function (err) {
-                    console.log(err);
-                }
-
-            );
-        }
-
-       if(!!req.body.usingform || req.body.maxprice){
-            phonesController.searchParam(req).then(
-                (phones, er) => {
-                    console.log(phones);
-                    res.render("search", {layout: 'main', phones, brandsnames});
-                }
-            )
-
-        }
-         if (!!req.body.searchbar) {
-            phonesController.searchName(req, req.body.searchbar).then(
-                (phones, er) => {
-                    console.log(phones);
-                    res.render("search", {layout: 'main', phones});
-                }
-            )
-
-        }
-
-    })
-
-router.get("/search", async (req, res)=>{
-    if(!brandsnames.length){
+    if (!brandsnames.length) {
         phonesController.getbrands(req).then(
             function f(phones) {
-                brandsnames= phones;
+                brandsnames = phones;
             },
             function (err) {
                 console.log(err);
             }
-
         );
     }
-        phonesController.getAllkeys(req).then(
-            (phones, err)=>
-            {
-                res.render("search", {layout: 'main', phones, brandsnames})
+
+    if (req.body.searchbar) {
+        phonesController.searchName(req.body.searchbar).then(
+            (phones, err) => {
+                if (req.user) {
+                    var user = req.user[0];
+                }
+                res.render("search", {layout: 'main', phones, brandsnames, user})
             }
         )
-
+    }
+   else {
+        phonesController.searchParam(req).then(
+            (phones, er) => {
+                if (req.user) {
+                    var user = req.user[0];
+                }
+                res.render("search", {layout: 'main', phones, brandsnames, user});
+            }
+        )
+    }
 })
+
+router.get("/search", async (req, res)=> {
+    if (!brandsnames.length) {
+        phonesController.getbrands(req).then(
+            function f(phones) {
+                brandsnames = phones;
+            },
+            function (err) {
+                console.log(err);
+            }
+        );
+    }
+
+    phonesController.searchParam(req).then(
+        (phones, err) => {
+            if (req.user) {
+                var user = req.user[0];
+            }
+            if(!phones.length){
+                var message="Nothing found";
+            }
+            res.render("search", {layout: 'main', phones, brandsnames, user, message})
+        }
+    )
+});
 
 router.get("/search/phone/:id", async (req, res)=>{
     let id = req.params.id;
@@ -82,21 +87,27 @@ router.get("/search/phone/:id", async (req, res)=>{
             (res, err)=>{
                 review =res;
             }
-        )
+        );
         phonesController.getStores(req).then(
             (res, err)=>{
                 stores=res;
             }
-        )
+        );
         phonesController.getById(req).then(
             (phone, err)=>
             {
                 if(err) {}//todo
-                console.log(phone);
-                res.render("phoneIns", {layout: 'main', phone, review, stores});
+                if(req.user){
+                    var user=req.user[0];
+                }
+               let  user_another=user;
+                let title=phone[0].brand+phone[0].name;
+                res.render("phoneIns", {layout: 'main', phone:phone[0], review, stores, user,user_another});
             }
         )
     }
-})
+});
+
+
 
 module.exports = router;

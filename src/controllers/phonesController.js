@@ -1,60 +1,51 @@
 //var sql=require('../db.js')
-//const sql = require('../app')
-
+//const sql = require('../app'
+const mysql = require('mysql');
+const conn = require('../db');
 //only for filters
-function getbrands(req){
+async function getbrands(req) {
     return new Promise((resolve, reject) => {
-         req.getConnection((err, sql)=>{
-            sql.query("Select distinct brand from Phones",
-                function (err, result, fields) {
-                    if (err) reject(err);
-                    resolve(result);
-                });
-         });
-    });
+        conn.query("Select distinct brand from Phones", "",
+            function (err, result, fields) {
+                if (err) reject(err);
+                resolve(result);
+            });
+    })
 }
 
 function getAllkeys(req) {
         return new Promise((resolve, reject) => {
-            req.getConnection((err, sql)=>{
-                sql.query("Select * from Phones",
+            conn.query("Select * from Phones", "",
                     function (err, result, fields) {
                         if (err) reject(err);
                         resolve(result);
                     });
             });
-        });
 }
 
 
-function getLast (req) {
+function getLast () {
     return new Promise((resolve, reject) => {
-        req.getConnection((err, sql) => {
-
-            sql.query("Select * from Phones ORDER BY id DESC LIMIT 5",
-                function (err, result, fields) {
-                    if (err) reject(err);
-                    resolve(result);
-                });
+        conn.query("Select * from Phones ORDER BY id DESC LIMIT 5", "", function (err, res) {
+            console.log(res);
+            resolve(res);
         });
+
     });
 }
 
 
-function searchName (req, query) {
+function searchName (query) {
     query = '%' + query + '%'
     return new Promise((resolve, reject) => {
-        req.getConnection((err, sql) => {
-            sql.query("Select * from Phones where brand LIKE ? " +
-                "union " +
-                "Select * from Phones where name LIKE ?", [query, query],
-                function (err, result, fields) {
-                    if (err) reject(err);
-                    resolve(result);
-                }
-            )
-
-        })
+        conn.query("Select * from Phones where brand LIKE ? " +
+            "union " +
+            "Select * from Phones where name LIKE ?", [query, query],
+            function (err, result, fields) {
+                if (err) reject(err);
+                resolve(result);
+            }
+        )
 
     })
 }
@@ -62,20 +53,17 @@ function searchName (req, query) {
 function searchPrice (req, query) {
     query=+query;
     return new Promise((resolve, reject) => {
-        req.getConnection((err, sql) => {
-            sql.query("select p.id, p.name, p.brand, p.ram, p.rom, x.price " +
-                "from Phones p left join ( " +
-                "select * from Stores s " +
-                "where price=(select min(price) from Stores st where st.phoneid=s.phoneid)" +
-                " ) x on p.id=x.phoneid " +
-                "WHERE(COALESCE(price, 0)<?)", [query],
-                function (err, result, fields) {
-                    if (err) reject(err);
-                    resolve(result);
-                }
-            )
-
-        })
+        conn.query("select p.id, p.name, p.brand, p.ram, p.rom, x.price " +
+            "from Phones p left join ( " +
+            "select * from Stores s " +
+            "where price=(select min(price) from Stores st where st.phoneid=s.phoneid)" +
+            " ) x on p.id=x.phoneid " +
+            "WHERE(COALESCE(price, 0)<?)", [query],
+            function (err, result, fields) {
+                if (err) reject(err);
+                resolve(result);
+            }
+        )
     })
 }
 function searchParam(req) {
@@ -115,8 +103,7 @@ function searchParam(req) {
     }
     query += "1";
     return new Promise((resolve, reject) => {
-        req.getConnection((err, sql) => {
-            sql.query(
+        conn.query(
                 "select p.id, p.name, p.brand, p.ram, p.rom, x.price " +
                 "from Phones p left join ( " +
                 "select * from Stores s " +
@@ -128,18 +115,14 @@ function searchParam(req) {
                 })
 
 
-        })
     })
 }
 
 function getById(req) {
     return new Promise((resolve, reject) => {
-        req.getConnection((err, sql) => {
-            //todo join
-            sql.query("select * from Phones where id=?", [req.params.id], (err, result, fields) => {
+        conn.query("select * from Phones where id=?", [req.params.id], (err, result, fields) => {
                 if (err) reject(err);
                 resolve(result);
-            })
         })
     })
 }
@@ -148,25 +131,33 @@ function getById(req) {
 //phones page
 function getReviews(req){
     return new Promise((resolve, reject) => {
-        req.getConnection((err, sql) => {
-            //todo join
-            sql.query("select * from Review where phoneid=?", [req.params.id], (err, result, fields) => {
+        conn.query("select userid, phoneid, `Text`, full_name from Review r join (select * from users) x " +
+            "where phoneid=? and x.id=r.userid", [req.params.id], (err, result, fields) => {
                 if (err) reject(err);
                 resolve(result);
             })
         })
-    })
+
 }
 function getStores(req){
     return new Promise((resolve, reject) => {
-        req.getConnection((err, sql) => {
-            //todo join
-            sql.query("select link, price, name, phoneid " +
+        conn.query("select link, price, name, phoneid " +
                 "from Stores where phoneid=?", [req.params.id], (err, result, fields) => {
                 if (err) reject(err);
                 resolve(result);
                 console.log(result);
             })
+    })
+}
+
+
+function getNumber(req){
+    return new Promise((resolve, reject) => {
+        conn.query("select link, price, name, phoneid " +
+            "from Stores where phoneid=?", [req.params.id], (err, result, fields) => {
+            if (err) reject(err);
+            resolve(result);
+            console.log(result);
         })
     })
 }

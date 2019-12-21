@@ -1,10 +1,11 @@
+<link href="/style/login.css" rel="stylesheet">
 <body>
-<div class="container row">
+<div class="container row login_form_conatainer">
     <div class="login col-md-6 col-sm-12">
         <h3>Log in</h3>
         <form class="login_form form-group" action="/login" method="post">
             <p><label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" id="uname" name="name" required maxlength="50" class="form-control"></p>
+                <input type="text" placeholder="Enter Username" id="uname" name="username" required maxlength="50" class="form-control"></p>
 
             <p> <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" id="psw" name="password" required maxlength="50" class="form-control"></p>
@@ -20,7 +21,7 @@
         <h3>Sing up</h3>
         <form class="login_form form-group" action="/register" method="post">
             <p><label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="name" required maxlength="50" class="form-control"></p>
+                <input type="text" placeholder="Enter Username" name="username" required maxlength="50" class="form-control"></p>
 
             <p> <label for="pswr"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" id="pswr" name="password" required maxlength="50" class="form-control"></p>
@@ -36,13 +37,9 @@
                     </select>
                 </p>
             </div>
-            <div >
+            <div>
                 <p> </p>
-                <b>Sex</b>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <p><input type = "radio" name="sex" value="man">Male</p>
-                    <p><input type = "radio"  name="sex" value="woman" class="ml-3">Female</p>
-                </div>
+
             </div>
             <button type="submit" class="btnSubmit">Sing up</button>
 
@@ -50,5 +47,8 @@
 
     </div>
 </div>
+{{#if message}}
+    <h3 class="text-center">{{message}}</h3>
+{{/if}}
 </body>
 </html>

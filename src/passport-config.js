@@ -1,29 +1,39 @@
 const LocalStrategy = require('passport-local').Strategy
 const md5=require('js-md5')
+const passport = require('passport')
+const users = require('./controllers/userController')
 
-function initialize(passport, getUserByEmail, getUserById) {
-    const authenticateUser = async (email, password, done) => {
-        const user = getUserByEmail(email)
-        if (user == null) {
-            return done(null, false, { message: 'No user with that email' })
-        }
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
 
-        try {
-            if (md5(password)=== user.password) {
-                return done(null, user)
-            } else {
-                return done(null, false, { message: 'Password incorrect' })
-            }
-        } catch (e) {
-            return done(e)
-        }
-    }
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
 
-    passport.use(new LocalStrategy({ usernameField: 'name' }, authenticateUser))
-    passport.serializeUser((user, done) => done(null, user.id))
-    passport.deserializeUser((id, done) => {
-        return done(null, getUserById(id))
-    })
-}
+passport.use('local', new LocalStrategy(
+    (username, password, done) => {
+        users.getuser(username)
+            .then(user => {
+                if (!user[0]) {
+                   // console.log('User not found');
+                    done(null, false);
+                    throw("404");
+                }
+                    if(md5(password)==user[0].psswd)
+                    {
+                        done(null, user);
+                        } else {
+                          //  console.log("Not Valid");
+                            done(null, false);
+                        }
+            }, done)
 
-module.exports = initialize
+            .catch(err => {
+                console.log(err);
+                done(err);
+            });
+    }));
+
+
+module.exports = passport;

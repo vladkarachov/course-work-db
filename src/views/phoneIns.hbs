@@ -2,10 +2,18 @@
 <main>
     <div class = "outer-wrapper">
         <div class="container">
-        <div class="pic-wrapper col-lg-2 col-md-4 col-sm-8 px-0">
+<div class="row">
+        <div class="pic-wrapper col-lg-2 col-md-4 col-sm-8 px-0 m-2">
             <img src="/pic/Phone.png"  class="img-fluid phone-pic" alt="{{name}}">
         </div>
-        </div>
+            <div class="d-inline">
+
+            <form action="/addLike" method="post">
+                <input type="hidden" name="phoneid" value="{{phone.id}}">
+                <button type="submit" id="LikeButton" class="">Add to saved<i class="fa fa-heart" style="font-size: 50px"></i></button>
+            </form>
+            </div>
+        </div></div>
     </div>
     <div class="container p-3">
     <div class="row">
@@ -14,7 +22,7 @@
                     <div class="card col-sm-6 col-md-3">
                         <div class="card-body">
                             <p>{{phone.ram}}GB/{{phone.rom}}GB</p>
-                            <p>Sellers: {{review.length}}</p>
+                            <p>Sellers: {{stores.length}}</p>
                         </div>
                     </div>
                 </div>
@@ -49,22 +57,33 @@
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Text</th>
-
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
                     {{#each review}}
                         <tr >
                             <th scope="row" >
-                                {{username}} aaa
+                                {{full_name}}
                             </th>
-                            <td class=>
+                            <td>
                                 {{Text}}
+                            </td>
+                            <td>
+                                {{user}}
                             </td>
                         </tr>
                     {{/each}}
                         </tbody>
                     </table>
+                    <form action="/addReview" method="post">
+                        <div class="form-group" >
+                            <label for="exampleInputEmail1">Your review!</label>
+                            <textarea type="text-area" class="form-control" id="review_text_input" name="review_text" placeholder="Enter your review" maxlength="200" required></textarea>
+                        </div>
+                        <input type="hidden" name="id" value="{{phone.id}}">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
             <aside class="card-group-item col-3 ">
@@ -74,7 +93,7 @@
                 <div class="card-body">
                     {{#each stores}}
                         <a href="{{link}}" class="card"><span>
-                            {{name}} ---</span>
+                            {{name}}</span>
                             <span class="btn btn-primary"> {{price}}
                         </span></a>
                     {{/each}}
