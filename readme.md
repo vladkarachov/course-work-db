@@ -1,1 +1,0 @@
-This is going to be a site where you can choose a phone that satisfy you
