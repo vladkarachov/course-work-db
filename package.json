@@ -11,7 +11,7 @@
     "express-fileupload": "^1.1.6",
     "express-flash": "0.0.2",
     "express-handlebars": "^3.1.0",
-    "express-hbs": "^2.3.0",
+    "express-hbs": "^2.4.0",
     "express-myconnection": "^1.0.4",
     "express-session": "^1.17.0",
     "hbs": "^4.0.6",
